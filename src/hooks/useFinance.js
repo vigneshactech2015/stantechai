@@ -26,7 +26,20 @@ const useFinance = () => {
         try{
             setLoading(true)
             const response = await getHttpClient(`financialdata`,'GET')
-            setFinancialData(response)
+            // SORTING by date
+            const sortedByDate = response?.sort((a, b) => {
+                let dateA = new Date(a.createdAt);
+                let dateB = new Date(b.createdAt);
+                
+                if (dateA < dateB) {
+                    return -1;
+                }
+                if (dateA > dateB) {
+                    return 1;
+                }
+                return 0;
+            });
+            setFinancialData(sortedByDate)
             setLoading(false)
         }catch(error){
             setLoading(false)

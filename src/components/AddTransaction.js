@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import moment from 'moment';
 import { toast } from 'react-toastify';
 import useFinance from '../hooks/useFinance';
-import { Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
 
 const validationSchema = yup.object().shape({
     createdAt: yup.date().required('Transaction Date is required'),
@@ -53,7 +53,7 @@ const AddTransaction = () => {
         }
       }
     return (
-        <Stack>
+        <Box>
             <Typography variant="h4">Add New Transaction</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack direction="column" spacing={3}>
@@ -106,7 +106,7 @@ const AddTransaction = () => {
           </Stack>
                 </Stack>
             </form>
-        </Stack>
+        </Box>
     )
 }
 
