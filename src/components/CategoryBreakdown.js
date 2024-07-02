@@ -1,9 +1,40 @@
+import { Box } from '@mui/material';
+import { PieChart } from 'react-minimal-pie-chart';
+import useFinance from '../hooks/useFinance';
+import { useEffect,useState } from 'react';
+
 const CategoryBreakdown = () => {
+    const {financialData,getFinancialData} = useFinance()
+    const [pieChartData,setPieChartData] = useState([])
+
+    useEffect(()=>{
+        getFinancialData()
+    },[])
+
+    useEffect(()=>{
+        const piechartConversion = []
+        const colors = ["red","blue","green","yellow","pink","biege","grey","purple","orange","coral"]
+        financialData.map((item)=>{
+            if(item.type === 'expense'){
+            piechartConversion.push({
+                title : item.name,
+                value : item.amount,
+                color :  colors[Math.floor(Math.random()*10)]
+            })
+         }
+        })
+
+        setPieChartData(piechartConversion)
+    },[financialData])
 
     return (
-        <div>
+        <Box style={{width:"100%",height:"60vh"}}>
             <h1>CategoryBreakdown</h1>
-        </div>
+           { pieChartData?.length >= 1 && <PieChart
+            data={pieChartData}
+            label={(labelRenderProps)=>labelRenderProps.dataEntry.title}
+            /> }
+        </Box>
     )
 }
 
