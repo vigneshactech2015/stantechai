@@ -26,6 +26,16 @@ const AddTransaction = () => {
         },
       });
 
+      const notify = (params) => {
+        toast(params,{
+            autoClose:2000,
+            style:{
+             backgroundColor:"green",
+             color:"white"
+            }
+        })
+      }
+
       const onSubmit = async (data) => {
         try{
             const utcDate = moment(data.createdAt).format('YYYY-MM-DD')
@@ -36,7 +46,7 @@ const AddTransaction = () => {
                 type : data.type
             }
             await addNewFinancialData(payload)
-            toast("Transaction created Successfully")
+            notify("Transaction details created successfully")
             reset()
         }catch(error){
             console.log(error)
@@ -51,7 +61,7 @@ const AddTransaction = () => {
             <Controller
               name="createdAt"
               control={control}
-              render={({ field }) => <input type="date"/>}
+              render={({ field }) => <TextField type="date" {...field}/>}
             />
             {errors.createdAt && <Typography color="error">{errors.createdAt.message}</Typography>}
           </FormControl>
