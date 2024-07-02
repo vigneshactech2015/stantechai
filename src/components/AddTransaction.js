@@ -19,7 +19,7 @@ const AddTransaction = () => {
     const { control, handleSubmit, formState: { errors }, reset, setValue } = useForm({
         resolver: yupResolver(validationSchema),
         defaultValues: {
-          createdAt: undefined,
+          createdAt: '',
           name: '',
           amount: '',
           type: ''
