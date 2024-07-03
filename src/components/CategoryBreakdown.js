@@ -19,7 +19,7 @@ const CategoryBreakdown = () => {
             if(item.type === 'expense'){
             piechartConversion.push({
                 title : item.name,
-                value : item.amount,
+                value : parseInt(item.amount),
                 color :  colors[Math.floor(Math.random()*10)]
             })
          }
