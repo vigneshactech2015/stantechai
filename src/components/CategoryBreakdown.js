@@ -13,19 +13,20 @@ const CategoryBreakdown = () => {
     },[])
 
     useEffect(()=>{
-        const piechartConversion = []
-        const colors = ["red","blue","green","yellow","pink","biege","grey","purple","orange","coral"]
-        financialData.map((item)=>{
-            if(item.type === 'expense'){
-            piechartConversion.push({
-                title : item.name,
-                value : parseInt(item.amount),
-                color :  colors[Math.floor(Math.random()*10)]
-            })
-         }
-        })
+        if(financialData.length>=1){
 
-        setPieChartData(piechartConversion)
+            const colors = ["red", "blue", "green", "yellow", "pink", "violet", "grey", "purple", "orange", "coral"];
+            const piechartConversion = financialData
+                .filter(item => item.type === 'expense')
+                .map((item, index) => ({
+                    title: item.name,
+                    value: parseInt(item.amount),
+                    color: colors[index % colors.length]
+                }));
+
+            setPieChartData(piechartConversion);
+        }
+       
     },[financialData])
 
     return (
