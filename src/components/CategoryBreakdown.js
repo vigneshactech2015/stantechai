@@ -32,7 +32,7 @@ const CategoryBreakdown = () => {
     return (
         <Box style={{width:"100%",height:"50vh"}}>
             <br/>
-            <Typography variant='h5'>Expense CategoryBreakdown</Typography>
+            <Typography variant='h5'>Expense Breakdown</Typography>
             <br/>
             {loading &&   
                 <Box className="loadercontainer">
