@@ -4,13 +4,12 @@ import useFinance from "../hooks/useFinance";
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
-    { field: 'id', headerName: 'S.No', width: 100 },
-    { field: 'createdAt', headerName: 'Transaction Date', width: 150 },
-    { field: 'name', headerName: 'Transaction Name', width: 300 },
+    { field: 'createdAt', headerName: 'Transaction Date', width: 200 },
+    { field: 'name', headerName: 'Transaction Name', width: 400 },
     {
       field: 'amount',
       headerName: 'Amount',
-      width: 100,
+      width: 300,
       renderCell: (row)=>{
         return <span style={{color : row?.row?.type === 'income' ? "green" : "red"}}>{row?.row?.amount || 'No Amount'}</span>
       }
@@ -37,9 +36,10 @@ const TransactionList = () => {
     },[financialData])
 
     return(
-        <Box style={{width: '65%' }}>
-            <Typography variant="h4">Transaction List</Typography>
-
+        <Box style={{width: '95%'}}>
+          <br/>
+            <Typography variant="h5">Transaction List</Typography>
+          <br/>
             <DataGrid
             rows={transactionLists}
             columns={columns}

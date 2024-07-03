@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { PieChart } from 'react-minimal-pie-chart';
 import useFinance from '../hooks/useFinance';
 import { useEffect,useState } from 'react';
@@ -28,8 +28,10 @@ const CategoryBreakdown = () => {
     },[financialData])
 
     return (
-        <Box style={{width:"100%",height:"60vh"}}>
-            <h1>CategoryBreakdown</h1>
+        <Box style={{width:"100%",height:"50vh"}}>
+            <br/>
+            <Typography variant='h5'>Expense CategoryBreakdown</Typography>
+            <br/>
            { pieChartData?.length >= 1 && <PieChart
             data={pieChartData}
             label={(labelRenderProps)=>labelRenderProps.dataEntry.title}
