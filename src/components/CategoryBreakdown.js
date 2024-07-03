@@ -43,6 +43,10 @@ const CategoryBreakdown = () => {
            { !loading && pieChartData?.length >= 1 && <PieChart
             data={pieChartData}
             label={(labelRenderProps)=>labelRenderProps.dataEntry.title}
+            labelStyle={{
+                fontSize: '6px',
+                fill:'white'
+            }}
             /> }
         </Box>
     )
