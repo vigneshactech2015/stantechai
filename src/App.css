@@ -1,0 +1,35 @@
+.productname{
+    color:#8B008B
+}
+
+/*
+Summary Section
+*/
+
+.summaryContainer{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5%;
+}
+
+
+.summaryItems{
+    background-color:#8B008B;
+    color:white;
+    height:200px;
+    width:200px;
+    display:flex;
+    border-radius:20px;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+For mobile devices
+*/
+
+@media(max-width:680px){
+    .summaryItems{
+        margin-top: 2%;
+    }
+}

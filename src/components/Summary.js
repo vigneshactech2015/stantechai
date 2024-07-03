@@ -27,10 +27,20 @@ const Summary = () => {
    
     return (
         <Box>
-            <Typography variant="h4">Summary</Typography>
-           {income !== 0 && <Typography variant="h4">Total Income {income}</Typography>}
-           {expense !== 0 && <Typography variant="h4">Total Expense {expense} </Typography>}
-           { income !== 0  && expense !== 0 && <Typography variant="h4">Balance {income-expense} </Typography> }
+             <br/>
+            <Typography variant="h5">Summary</Typography> 
+            <br/>
+            <div className="summaryContainer">
+                <div className='summaryItems'>
+           {income !== 0 && <Typography variant="body1">Total Income {income}</Typography>}
+                </div>
+                <div className='summaryItems'>
+           {expense !== 0 && <Typography variant="body1">Total Expense {expense} </Typography>}
+           </div>
+           <div className='summaryItems'>
+           { income !== 0  && expense !== 0 && <Typography variant="body1">Balance {income-expense} </Typography> }
+           </div>
+           </div>
         </Box>
     )
 }

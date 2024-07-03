@@ -16,7 +16,7 @@ const validationSchema = yup.object().shape({
 const AddTransaction = () => {
     const {addNewFinancialData} = useFinance()
 
-    const { control, handleSubmit, formState: { errors }, reset, setValue } = useForm({
+    const { control, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(validationSchema),
         defaultValues: {
           createdAt: '',
@@ -53,8 +53,9 @@ const AddTransaction = () => {
         }
       }
     return (
-        <Box>
-            <Typography variant="h4">Add New Transaction</Typography>
+        <Box style={{width:"95%"}}>
+          <br/>
+            <Typography variant="h5">Add New Transaction</Typography><br/>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Stack direction="column" spacing={3}>
                 <FormControl fullWidth error={!!errors.createdAt}>
@@ -101,8 +102,8 @@ const AddTransaction = () => {
           </FormControl>
 
           <Stack direction='row' justifyContent='flex-end' alignItems='center' spacing={2}>
-            <Button onClick={()=>reset()} variant='contained'>Clear Form</Button>
-            <Button variant='contained' type="submit">Submit</Button>
+            <Button onClick={()=>reset()} variant='contained'  color="secondary">Clear Form</Button>
+            <Button variant='contained' type="submit" color="success">Submit</Button>
           </Stack>
                 </Stack>
             </form>
