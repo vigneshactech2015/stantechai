@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material"
 import { useEffect,useState } from "react"
-import useFinance from "../hooks/useFinance"
+import useFinance from "../hooks/useFinance";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Summary = () => {
-    const {financialData,getFinancialData} = useFinance()
+    const {financialData,getFinancialData,loading} = useFinance()
     const [income,setIncome] = useState(0)
     const [expense,setExpense] = useState(0)
     
@@ -30,7 +31,14 @@ const Summary = () => {
              <br/>
             <Typography variant="h5">Summary</Typography> 
             <br/>
-            <div className="summaryContainer">
+           
+            {loading &&   
+                <Box className="loadercontainer">
+                <CircularProgress color="secondary" />
+                </Box>
+            }
+
+           {!loading && <div className="summaryContainer">
                 <div className='summaryItems'>
            {income !== 0 && <Typography variant="body1">Total Income {income}</Typography>}
                 </div>
@@ -40,7 +48,9 @@ const Summary = () => {
            <div className='summaryItems'>
            { income !== 0  && expense !== 0 && <Typography variant="body1">Balance {income-expense} </Typography> }
            </div>
-           </div>
+           </div> }
+
+
         </Box>
     )
 }

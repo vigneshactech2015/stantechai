@@ -2,6 +2,14 @@
     color:#8B008B
 }
 
+.loadercontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:50vh;
+}
+
 /*
 Summary Section
 */

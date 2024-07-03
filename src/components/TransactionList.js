@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useEffect,useState } from "react";
 import useFinance from "../hooks/useFinance";
 import { DataGrid } from '@mui/x-data-grid';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const columns = [
     { field: 'createdAt', headerName: 'Transaction Date', width: 200 },
@@ -22,7 +23,7 @@ const columns = [
   ];
 
 const TransactionList = () => {
-    const {getFinancialData,financialData} = useFinance()
+    const {getFinancialData,financialData,loading} = useFinance()
     const [transactionLists,setTransactionLists] = useState([])
 
     useEffect(()=>{
@@ -40,7 +41,12 @@ const TransactionList = () => {
           <br/>
             <Typography variant="h5">Transaction List</Typography>
           <br/>
-            <DataGrid
+          {loading &&   
+                <Box className="loadercontainer">
+                <CircularProgress color="secondary" />
+                </Box>
+            }
+            {!loading && <DataGrid
             rows={transactionLists}
             columns={columns}
         initialState={{
@@ -49,7 +55,7 @@ const TransactionList = () => {
           },
         }}
         pageSizeOptions={[5, 10,25]}
-      />
+      />}
 
         </Box>
     )

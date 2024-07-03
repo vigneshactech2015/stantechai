@@ -2,9 +2,10 @@ import { Box, Typography } from '@mui/material';
 import { PieChart } from 'react-minimal-pie-chart';
 import useFinance from '../hooks/useFinance';
 import { useEffect,useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const CategoryBreakdown = () => {
-    const {financialData,getFinancialData} = useFinance()
+    const {financialData,getFinancialData,loading} = useFinance()
     const [pieChartData,setPieChartData] = useState([])
 
     useEffect(()=>{
@@ -32,7 +33,13 @@ const CategoryBreakdown = () => {
             <br/>
             <Typography variant='h5'>Expense CategoryBreakdown</Typography>
             <br/>
-           { pieChartData?.length >= 1 && <PieChart
+            {loading &&   
+                <Box className="loadercontainer">
+                <CircularProgress color="secondary" />
+                </Box>
+            }
+
+           { !loading && pieChartData?.length >= 1 && <PieChart
             data={pieChartData}
             label={(labelRenderProps)=>labelRenderProps.dataEntry.title}
             /> }
